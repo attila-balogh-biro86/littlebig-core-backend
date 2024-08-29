@@ -15,7 +15,7 @@ import java.util.UUID;
 public abstract class Rfp {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     protected UUID id;
     protected String name;
     protected String description;

@@ -8,5 +8,5 @@ public record RiseRfpCreationDTO(String name,
                                  String description,
                                  WorkUnitType workUnitType,
                                  Double maximumPrice,
-                                 UUID rfpApplicantId) {
+                                 UUID preferredSupplierClientId) {
 }

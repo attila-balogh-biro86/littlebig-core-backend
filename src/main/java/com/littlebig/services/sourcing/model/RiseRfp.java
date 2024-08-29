@@ -52,7 +52,7 @@ public class RiseRfp extends Rfp {
   @Override
   public String toString() {
     return "RiseRfp{" +
-        "rfpApplicantId=" + preferredSupplierClientId +
+        "preferredSupplierClientId=" + preferredSupplierClientId +
         ", id=" + id +
         ", name='" + name + '\'' +
         ", description='" + description + '\'' +
