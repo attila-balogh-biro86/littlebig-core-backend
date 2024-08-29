@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.modulith.core.ApplicationModules;
 import org.springframework.modulith.docs.Documenter;
 
-public class SpringModulithTests {
+public class ModulithIntegrityVerificationTest {
 
     ApplicationModules modules = ApplicationModules.of(SpringModulith.class);
 
