@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.littlebig.services.client.api.ClientDisabledEvent;
 import com.littlebig.services.common.event.ApplicationEventListener;
+import com.littlebig.services.common.exception.ResourceNotFoundException;
 import com.littlebig.services.notification.api.NotificationManagementInternalAPI;
 import com.littlebig.services.sourcing.api.ConnectSourceExternalAPI;
 import com.littlebig.services.sourcing.api.ConnectSourceInternalAPI;
@@ -27,7 +28,7 @@ public class ConnectSourceManagementService implements ConnectSourceInternalAPI,
 
     private static final Logger LOG = LoggerFactory.getLogger(ConnectSourceManagementService.class);
 
-    private static final String RFP_NOT_FOUND = "RFP_NOT_FOUND";
+    private static final String RFP_NOT_FOUND = "Rfp with the given id not found.";
     private final ConnectRfpRepository connectRfpRepository;
     private final ConnectRfpMapper rfpMapper;
     private final NotificationManagementInternalAPI notificationManagementInternalAPI;
@@ -50,7 +51,7 @@ public class ConnectSourceManagementService implements ConnectSourceInternalAPI,
     @Override
     public ConnectRfpDTO getRfpById(UUID id) {
         ConnectRfp rfp = connectRfpRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException(RFP_NOT_FOUND));
+            .orElseThrow(() -> new ResourceNotFoundException(RFP_NOT_FOUND, id));
         return rfpMapper.rfpToRfpDTO(rfp);
     }
 
@@ -58,7 +59,7 @@ public class ConnectSourceManagementService implements ConnectSourceInternalAPI,
     public void publishRfp(UUID rfpId) {
         LOG.debug("The following RFP will be published to marketplace {}", rfpId);
         ConnectRfp rfp = connectRfpRepository.findById(rfpId)
-            .orElseThrow(() -> new RuntimeException(RFP_NOT_FOUND));
+            .orElseThrow(() -> new ResourceNotFoundException(RFP_NOT_FOUND, rfpId));
         rfp.setRfpStatus(RfpStatus.PUBLISHED);
         connectRfpRepository.save(rfp);
         notificationManagementInternalAPI.sendNotificationWhenRfpStatusChanged(rfpId, rfp.getRfpStatus().name(),
@@ -78,7 +79,7 @@ public class ConnectSourceManagementService implements ConnectSourceInternalAPI,
     public void revokeRFP(UUID rfpId) {
         LOG.debug("The following RFP will be revoked {}", rfpId);
         ConnectRfp rfp = connectRfpRepository.findById(rfpId)
-            .orElseThrow(() -> new RuntimeException(RFP_NOT_FOUND));
+            .orElseThrow(() -> new ResourceNotFoundException(RFP_NOT_FOUND, rfpId));
         rfp.setActive(Boolean.FALSE);
         rfp.setRfpStatus(RfpStatus.CLOSED);
         connectRfpRepository.save(rfp);

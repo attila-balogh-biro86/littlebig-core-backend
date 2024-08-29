@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.littlebig.services.common.exception.ResourceNotFoundException;
 import com.littlebig.services.sourcing.api.RiseRfpCreationDTO;
 import com.littlebig.services.sourcing.api.RiseSourceExternalAPI;
 import com.littlebig.services.sourcing.api.RiseSourceInternalAPI;
@@ -21,7 +22,7 @@ public class RiseSourceManagementService implements RiseSourceInternalAPI, RiseS
     private static final Logger LOG = LoggerFactory.getLogger(RiseSourceManagementService.class);
     private final RiseRfpRepository riseRfpRepository;
     private final RiseRfpMapper rfpMapper;
-    private static final String RFP_NOT_FOUND = "RFP_NOT_FOUND";
+    private static final String RFP_NOT_FOUND = "Rfp with the given id not found.";
 
     public RiseSourceManagementService(RiseRfpRepository riseRfpRepository, RiseRfpMapper rfpMapper) {
         this.riseRfpRepository = riseRfpRepository;
@@ -39,7 +40,7 @@ public class RiseSourceManagementService implements RiseSourceInternalAPI, RiseS
     @Override
     public RiseRfpDTO getRfpById(UUID id) {
         RiseRfp rfp = riseRfpRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException(RFP_NOT_FOUND));
+            .orElseThrow(() -> new ResourceNotFoundException(RFP_NOT_FOUND, id));
         return rfpMapper.rfpToRfpDTO(rfp);
     }
 

@@ -1,4 +1,4 @@
-package com.littlebig.services.gateway;
+package com.littlebig.services.gateway.api;
 
 import java.util.UUID;
 
