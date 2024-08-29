@@ -20,4 +20,10 @@ public class ModulithIntegrityVerificationTest {
                 .writeModulesAsPlantUml()
                 .writeIndividualModulesAsPlantUml();
     }
+
+    @Test
+    public void applicationModules() {
+        ApplicationModules modules = ApplicationModules.of(PlatformApplication.class);
+        modules.forEach(System.out::println);
+    }
 }

@@ -25,7 +25,7 @@ class ConnectManagementAPITest {
   void shouldAddNewRfp() {
     ConnectRfpCreationDTO rfp = new ConnectRfpCreationDTO("test", "test",
         WorkUnitType.DAYS,120d);
-    UUID rfpId = restTemplate.postForObject("/api/connect/request-for-proposals", rfp, UUID.class);
+    UUID rfpId = restTemplate.postForObject("/api/v1/connect/request-for-proposals", rfp, UUID.class);
     assertNotNull(rfpId);
   }
 
@@ -34,9 +34,9 @@ class ConnectManagementAPITest {
 
     ConnectRfpCreationDTO rfp = new ConnectRfpCreationDTO("test2", "test2",
         WorkUnitType.DAYS,120d);
-    UUID rfpId = restTemplate.postForObject("/api/connect/request-for-proposals", rfp, UUID.class);
+    UUID rfpId = restTemplate.postForObject("/api/v1/connect/request-for-proposals", rfp, UUID.class);
     assertNotNull(rfpId);
-    ConnectRfpDTO rfpDTO = restTemplate.getForObject("/api/connect/request-for-proposals/{id}", ConnectRfpDTO.class, rfpId);
+    ConnectRfpDTO rfpDTO = restTemplate.getForObject("/api/v1/connect/request-for-proposals/{id}", ConnectRfpDTO.class, rfpId);
     assertNotNull(rfpDTO);
     assertNotNull(rfpDTO.id());
     assertEquals(rfpId, rfpDTO.id());

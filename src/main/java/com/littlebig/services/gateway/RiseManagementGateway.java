@@ -15,7 +15,7 @@ import com.littlebig.services.sourcing.api.RiseSourceExternalAPI;
 import com.littlebig.services.sourcing.api.RiseRfpDTO;
 
 @RestController
-@RequestMapping("/api/rise")
+@RequestMapping("/api/v1/rise")
 public class RiseManagementGateway {
 
     private final RiseSourceExternalAPI riseSourceExternalAPI;

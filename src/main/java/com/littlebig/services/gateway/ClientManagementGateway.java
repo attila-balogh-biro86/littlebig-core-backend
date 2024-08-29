@@ -14,7 +14,7 @@ import com.littlebig.services.client.api.ClientCreationDTO;
 import com.littlebig.services.client.api.ClientDTO;
 import com.littlebig.services.client.api.ClientManagementExternalAPI;
 @RestController
-@RequestMapping("/api/client")
+@RequestMapping("/api/v1/client")
 public class ClientManagementGateway {
 
   private final ClientManagementExternalAPI clientManagementExternalAPI;

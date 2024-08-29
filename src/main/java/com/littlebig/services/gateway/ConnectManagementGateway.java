@@ -10,7 +10,7 @@ import com.littlebig.services.sourcing.api.ConnectSourceExternalAPI;
 import com.littlebig.services.sourcing.api.ConnectRfpDTO;
 
 @RestController
-@RequestMapping("/api/connect")
+@RequestMapping("/api/v1/connect")
 public class ConnectManagementGateway {
 
     private final ConnectSourceExternalAPI connectSourceExternalAPI;
