@@ -32,7 +32,6 @@ public abstract class Rfp {
     RfpStatus rfpStatus;
 
     protected Rfp() {
-        this.id = UUID.randomUUID();
     }
 
     public UUID getId() {

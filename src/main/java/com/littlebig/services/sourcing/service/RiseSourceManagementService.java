@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.littlebig.services.sourcing.api.RiseRfpCreationDTO;
 import com.littlebig.services.sourcing.api.RiseSourceExternalAPI;
 import com.littlebig.services.sourcing.api.RiseSourceInternalAPI;
 import com.littlebig.services.sourcing.api.RiseRfpDTO;
@@ -28,7 +29,7 @@ public class RiseSourceManagementService implements RiseSourceInternalAPI, RiseS
     }
 
     @Override
-    public UUID createRFP(RiseRfpDTO rfpDTO) {
+    public UUID createRFP(RiseRfpCreationDTO rfpDTO) {
         LOG.debug("Create RFP with RFP DTO: {}", rfpDTO);
         RiseRfp rfp = rfpMapper.rfpDtoToRfp(rfpDTO);
         riseRfpRepository.save(rfp);
