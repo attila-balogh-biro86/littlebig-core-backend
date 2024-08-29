@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public interface RiseSourceExternalAPI {
 
-    UUID createRFP(RiseRfpDTO rfpDTO);
+    UUID createRFP(RiseRfpCreationDTO rfpDTO);
 
     RiseRfpDTO getRfpById(UUID id);
 }

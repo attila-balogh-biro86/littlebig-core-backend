@@ -5,9 +5,14 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.littlebig.services.sourcing.api.ConnectRfpCreationDTO;
+import com.littlebig.services.sourcing.api.ConnectRfpDTO;
+import com.littlebig.services.sourcing.api.RiseRfpCreationDTO;
 import com.littlebig.services.sourcing.api.RiseSourceExternalAPI;
 import com.littlebig.services.sourcing.api.RiseRfpDTO;
 
@@ -25,5 +30,10 @@ public class RiseManagementGateway {
     @GetMapping("/request-for-proposals/{id}")
     public RiseRfpDTO getRfpById(@PathVariable("id") UUID id) {
         return riseSourceExternalAPI.getRfpById(id);
+    }
+
+    @PostMapping("/request-for-proposals")
+    public UUID saveRfp(@RequestBody RiseRfpCreationDTO dto) {
+        return riseSourceExternalAPI.createRFP(dto);
     }
 }

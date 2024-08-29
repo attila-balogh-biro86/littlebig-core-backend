@@ -6,7 +6,7 @@ import org.springframework.modulith.docs.Documenter;
 
 public class ModulithIntegrityVerificationTest {
 
-    ApplicationModules modules = ApplicationModules.of(SpringModulith.class);
+    ApplicationModules modules = ApplicationModules.of(PlatformApplication.class);
 
     @Test
     void shouldBeCompliant() {
