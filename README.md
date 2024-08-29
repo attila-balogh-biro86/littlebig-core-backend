@@ -10,7 +10,7 @@
 In this project, I'm demonstrating how to implement the modulith app using Spring support. Here are the [docs](https://docs.spring.io/spring-modulith) about the project. 
 
 
-You need to have JDK17+ and Maven. Also run Docker on your machine to enable Zipkin container.
+You need to have JDK21 and Maven. Also run Docker on your machine to enable Zipkin container.
 Then just run the app with the following command:
 ```shell
 $ mvn spring-boot:run
